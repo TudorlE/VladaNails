@@ -6,44 +6,44 @@ export const testimonials: Testimonial[] = [
     name: "Ioana M.",
     initials: "IM",
     rating: 5,
-    service: "Russian Manicure",
+    service: "Alungire Gel",
     quote:
-      "The most meticulous manicure I've ever had. Vlada notices details other salons simply skip — my nails have never looked this refined.",
+      "Am mers prima dată acum 2 luni, recomandată de o colegă. Mi-a plăcut că mi-a explicat de la ce mărime pornesc și cât durează. Am revenit deja de 3 ori.",
   },
   {
     id: "t2",
     name: "Andreea P.",
     initials: "AP",
     rating: 5,
-    service: "Luxury Spa Pedicure",
+    service: "Design Nail Art",
     quote:
-      "It feels like a five-star spa, not a nail salon. Spotless, calm, and the result lasts weeks longer than anywhere else I've tried.",
+      "Am cerut ceva simplu și am ieșit cu un mic detaliu pictat pe inelar, gratis, cum a zis. Mi s-a părut mult pentru cât am plătit pe alungire.",
   },
   {
     id: "t3",
     name: "Cristina D.",
     initials: "CD",
-    rating: 5,
-    service: "Gel Extensions",
+    rating: 4,
+    service: "Alungire Gel",
     quote:
-      "I'm extremely particular about shape and Vlada got it exactly right on the first try. Worth every leu, every single time.",
+      "Sunt pretențioasă la formă (le vreau coffin, nu ballerina) și de data asta a ieșit exact cum am vrut. Singurul minus e că trebuie programat din timp, nu prea are locuri libere.",
   },
   {
     id: "t4",
     name: "Miruna S.",
     initials: "MS",
     rating: 5,
-    service: "Nail Art",
+    service: "Corecție",
     quote:
-      "Booked for a simple French set and left with tiny hand-painted details I didn't even ask for. This is artistry, not a service.",
+      "Merg la corecție din 2 în 2 săptămâni de vreo 4 luni. Nu mi s-a ridicat nicio unghie până acum, ceea ce la mine e o premieră.",
   },
   {
     id: "t5",
     name: "Alexandra R.",
     initials: "AR",
     rating: 5,
-    service: "BIAB Nails",
+    service: "French",
     quote:
-      "My natural nails have never been stronger. Three months in and no breaks, no lifting — just healthy, elegant nails.",
+      "Curat, punctual, și French-ul chiar arată clasic, nu ieftin. Am făcut poze la fiecare mână, sincer.",
   },
 ];

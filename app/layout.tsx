@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Fraunces, Jost } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
@@ -9,11 +9,12 @@ import { SvgDefs } from "@/components/ui/svg-defs";
 import { business } from "@/data/business";
 import { siteMeta } from "@/data/about";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "variable",
   style: ["normal", "italic"],
+  axes: ["opsz", "SOFT"],
 });
 
 const jost = Jost({
@@ -68,6 +69,16 @@ export const metadata: Metadata = {
   },
 };
 
+const dayOfWeekSchema: Record<string, string> = {
+  Luni: "Monday",
+  Marți: "Tuesday",
+  Miercuri: "Wednesday",
+  Joi: "Thursday",
+  Vineri: "Friday",
+  Sâmbătă: "Saturday",
+  Duminică: "Sunday",
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
@@ -83,10 +94,10 @@ const jsonLd = {
   url: siteMeta.url,
   priceRange: "$$$",
   openingHoursSpecification: business.hours
-    .filter((entry) => entry.hours !== "Closed")
+    .filter((entry) => entry.hours !== "Închis")
     .map((entry) => ({
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: entry.day,
+      dayOfWeek: dayOfWeekSchema[entry.day] ?? entry.day,
       opens: entry.hours.split(" – ")[0],
       closes: entry.hours.split(" – ")[1],
     })),
@@ -99,8 +110,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${cormorant.variable} ${jost.variable}`}
+      lang="ro"
+      className={`${fraunces.variable} ${jost.variable}`}
       suppressHydrationWarning
     >
       <head>

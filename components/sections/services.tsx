@@ -15,12 +15,12 @@ export function Services() {
     <section id="services" className="relative bg-background py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-16">
         <SectionTitle
-          eyebrow="Signature Services"
-          title="Crafted for every occasion"
-          description="From everyday polish to elaborate hand-painted art, each service is performed with the same unwavering precision."
+          eyebrow="Servicii Semnătură"
+          title="Lucrate pentru fiecare ocazie"
+          description="De la o corecție rapidă la un design complicat lucrat manual, fiecare serviciu primește aceeași precizie."
         />
 
-        <RevealGroup className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => {
             const color = getCategoryColor(service.category);
             return (
@@ -39,6 +39,10 @@ export function Services() {
                 {service.featured ? (
                   <span className="absolute right-5 top-6 rounded-full bg-gold/15 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-gold">
                     Popular
+                  </span>
+                ) : service.displayPrice === "Gratis" ? (
+                  <span className="absolute right-5 top-6 rounded-full bg-wine/12 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-wine">
+                    Inclus
                   </span>
                 ) : null}
 
@@ -62,8 +66,9 @@ export function Services() {
                     {service.duration}
                   </span>
                   <span className={cn("font-display text-xl", color.text)}>
-                    {service.priceLabel ? `${service.priceLabel} ` : ""}
-                    {service.price} lei
+                    {service.displayPrice
+                      ? service.displayPrice
+                      : `${service.priceLabel ? `${service.priceLabel} ` : ""}${service.price} lei`}
                   </span>
                 </div>
               </motion.div>
@@ -72,7 +77,7 @@ export function Services() {
         </RevealGroup>
 
         <Button href="#pricing" variant="secondary" size="lg">
-          View Full Price List
+          Vezi Lista Completă de Prețuri
         </Button>
       </Container>
     </section>

@@ -16,9 +16,9 @@ export function FAQ() {
     <section className="relative bg-surface-muted/40 py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
-          eyebrow="Good to Know"
-          title="Frequently asked questions"
-          description="Everything you might want to know before your visit. Can't find your answer? Reach out directly."
+          eyebrow="Bine de Știut"
+          title="Întrebări frecvente"
+          description="Tot ce ai vrea să știi înainte de vizită. Nu găsești răspunsul? Scrie-ne direct."
         />
 
         <div className="w-full max-w-2xl divide-y divide-border-subtle rounded-[2rem] border border-border-subtle bg-surface shadow-luxury">

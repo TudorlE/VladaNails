@@ -13,7 +13,7 @@ import { categoryColors } from "@/data/category-colors";
 export function About() {
   return (
     <section id="about" className="relative overflow-hidden bg-surface-muted/40 py-24 sm:py-32">
-      <GradientBlob tone="peach" className="right-[-6%] top-[10%] size-80 opacity-70" />
+      <GradientBlob tone="amber" className="right-[-6%] top-[10%] size-80 opacity-70" />
 
       <Container className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
         <Reveal direction="right" className="relative order-2 mx-auto aspect-[4/5] w-full max-w-md lg:order-1">
@@ -21,13 +21,13 @@ export function About() {
             {about.imageSrc ? (
               <Image
                 src={about.imageSrc}
-                alt="Inside the Vlada Nails studio"
+                alt="Interiorul studioului Vlada Nails"
                 fill
                 sizes="(max-width: 1024px) 90vw, 40vw"
                 className="object-cover"
               />
             ) : (
-              <div className="relative flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-beige via-ivory to-peach/40">
+              <div className="relative flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-beige via-ivory to-amber/30">
                 <CornerOrnament className="left-6 top-6" />
                 <CornerOrnament className="bottom-6 right-6 rotate-180" />
                 <div className="flex items-center gap-2">
@@ -37,13 +37,13 @@ export function About() {
                       <PolishSwatch key={c.hex} hex={c.hex} size="sm" />
                     ))}
                 </div>
-                <span className="font-display text-2xl italic text-ink/35">The Studio</span>
+                <span className="font-display text-2xl italic text-ink/35">Studioul</span>
               </div>
             )}
           </div>
           <div className="absolute -bottom-8 -left-8 hidden rounded-2xl border border-gold/30 bg-surface px-6 py-5 shadow-luxury sm:block">
             <p className="font-display text-3xl text-gold">100%</p>
-            <p className="text-xs uppercase tracking-wide text-muted">Sterilized Tools</p>
+            <p className="text-xs uppercase tracking-wide text-muted">Instrumentar Steril</p>
           </div>
         </Reveal>
 

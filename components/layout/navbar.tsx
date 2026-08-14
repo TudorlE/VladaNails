@@ -63,7 +63,7 @@ export function Navbar() {
           <div className="hidden items-center gap-3 lg:flex">
             <ThemeToggle />
             <Button href="#contact" size="md" icon={false}>
-              Book Appointment
+              Programează-te
             </Button>
           </div>
 
@@ -72,7 +72,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              aria-label="Toggle menu"
+              aria-label="Comută meniul"
               className="flex size-10 items-center justify-center rounded-full border border-ink/15 text-foreground dark:border-foreground/15"
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -102,7 +102,7 @@ export function Navbar() {
                 </a>
               ))}
               <Button href="#contact" size="lg" className="mt-2 w-full" onClick={() => setOpen(false)}>
-                Book Appointment
+                Programează-te
               </Button>
             </nav>
           </motion.div>

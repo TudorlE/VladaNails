@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -5,19 +6,30 @@ import { OrnamentDivider } from "@/components/ui/decor";
 
 export function CTABanner() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-beige via-peach/50 to-coral/40 py-20 sm:py-28">
-      <Container className="flex flex-col items-center gap-8 text-center">
+    <section className="relative overflow-hidden py-24 sm:py-32">
+      <Image
+        src="/jaguar/blana-jaguar.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 [background:radial-gradient(55%_75%_at_50%_50%,rgba(20,14,8,0.72)_0%,rgba(20,14,8,0.4)_60%,rgba(20,14,8,0.05)_88%)]"
+      />
+      <Container className="relative flex flex-col items-center gap-8 text-center">
         <Reveal>
-          <OrnamentDivider />
+          <OrnamentDivider tone="ivory" />
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="max-w-2xl font-display text-4xl italic leading-[1.15] tracking-tight text-ink sm:text-5xl">
-            Your best manicure yet is one visit away
+          <h2 className="max-w-2xl font-display text-4xl italic leading-[1.15] tracking-tight text-ivory drop-shadow-sm sm:text-5xl">
+            Cel mai frumos set al tău e la o programare distanță
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
           <Button href="#contact" size="lg">
-            Book Appointment
+            Programează-te
           </Button>
         </Reveal>
       </Container>

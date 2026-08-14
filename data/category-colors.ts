@@ -1,28 +1,21 @@
 /**
- * Maps each service/gallery category to a signature "polish shade" so the
- * site reads as a nail-color menu, not a uniform beige wall. Add new
- * categories here — keep class names fully literal so Tailwind's scanner
- * picks them up.
+ * Fiecare categorie (serviciu/galerie) primește o nuanță proprie din paleta
+ * „piele de jaguar" — folosită consecvent la iconițe, borduri de carduri,
+ * tab-uri de preț și filtre din galerie. Păstrează denumirile de clase
+ * complet literale — scanner-ul Tailwind are nevoie de ele așa.
  */
 export const categoryColors: Record<
   string,
   { hex: string; bgSoft: string; text: string; ring: string; bgSolid: string }
 > = {
-  manicure: {
+  alungire: {
     hex: "#b8894a",
     bgSoft: "bg-gold/15",
     text: "text-gold",
     ring: "ring-gold/40",
     bgSolid: "bg-gold",
   },
-  pedicure: {
-    hex: "#f0876f",
-    bgSoft: "bg-coral/20",
-    text: "text-coral",
-    ring: "ring-coral/40",
-    bgSolid: "bg-coral",
-  },
-  extensions: {
+  corectie: {
     hex: "#5a4128",
     bgSoft: "bg-espresso/12",
     text: "text-espresso",
@@ -30,29 +23,36 @@ export const categoryColors: Record<
     bgSolid: "bg-espresso",
   },
   design: {
-    hex: "#f7bfa8",
-    bgSoft: "bg-peach/25",
-    text: "text-[#c96a4e]",
-    ring: "ring-peach/40",
-    bgSolid: "bg-peach",
-  },
-  "nail art": {
     hex: "#7c3048",
     bgSoft: "bg-wine/12",
     text: "text-wine",
     ring: "ring-wine/30",
     bgSolid: "bg-wine",
   },
-  spa: {
-    hex: "#eccf9a",
-    bgSoft: "bg-gold-light/25",
-    text: "text-gold-dark",
-    ring: "ring-gold-light/40",
-    bgSolid: "bg-gold-light",
+  french: {
+    hex: "#c67a2e",
+    bgSoft: "bg-amber/15",
+    text: "text-amber",
+    ring: "ring-amber/40",
+    bgSolid: "bg-amber",
+  },
+  finisaje: {
+    hex: "#9c4620",
+    bgSoft: "bg-rust/15",
+    text: "text-rust",
+    ring: "ring-rust/40",
+    bgSolid: "bg-rust",
+  },
+  ombre: {
+    hex: "#f0876f",
+    bgSoft: "bg-coral/20",
+    text: "text-coral",
+    ring: "ring-coral/40",
+    bgSolid: "bg-coral",
   },
 };
 
-export const defaultCategoryColor = categoryColors.manicure;
+export const defaultCategoryColor = categoryColors.alungire;
 
 export function getCategoryColor(category: string) {
   return categoryColors[category.toLowerCase()] ?? defaultCategoryColor;

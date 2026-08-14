@@ -11,7 +11,7 @@ import { vladaProfile, certifications, stats } from "@/data/vlada";
 export function MeetVlada() {
   return (
     <section id="vlada" className="relative overflow-hidden bg-surface-muted/40 py-24 sm:py-32">
-      <GradientBlob tone="coral" className="left-[-8%] top-[15%] size-96 opacity-60" />
+      <GradientBlob tone="rust" className="left-[-8%] top-[15%] size-96 opacity-60" />
 
       <Container className="grid items-start gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <Reveal direction="right" className="relative mx-auto w-full max-w-sm lg:mx-0">
@@ -25,7 +25,7 @@ export function MeetVlada() {
                 className="object-cover"
               />
             ) : (
-              <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-beige via-peach/40 to-coral/30">
+              <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-beige via-amber/40 to-rust/30">
                 <User className="size-10 text-ink/25" strokeWidth={1.2} />
                 <span className="font-display text-xl italic text-ink/30">Vlada</span>
               </div>
@@ -50,7 +50,7 @@ export function MeetVlada() {
           <Reveal>
             <span className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.35em] text-gold">
               <span className="h-px w-8 bg-gold/60" />
-              Meet the Artist
+              Cunoaște-o pe Artistă
             </span>
           </Reveal>
           <Reveal delay={0.08}>

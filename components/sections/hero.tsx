@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform, type Variants } from "framer-motion";
 import { Sparkles, Star } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -22,7 +23,7 @@ const fadeUp: Variants = {
   }),
 };
 
-const swatchOrder = ["manicure", "pedicure", "nail art", "design", "extensions"] as const;
+const swatchOrder = ["alungire", "design", "french", "corectie", "finisaje", "ombre"] as const;
 
 export function Hero() {
   const visualRef = useRef<HTMLDivElement>(null);
@@ -45,12 +46,9 @@ export function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-background pb-20 pt-36 sm:pb-28 sm:pt-44">
-      <GradientBlob tone="peach" className="left-[-10%] top-[8%] size-[28rem]" />
-      <GradientBlob tone="gold" className="right-[-8%] top-[35%] size-[24rem]" />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.4] [background-image:radial-gradient(rgba(198,161,91,0.18)_1px,transparent_1px)] [background-size:28px_28px]"
-      />
+      <GradientBlob tone="amber" className="left-[-10%] top-[8%] size-[28rem]" />
+      <GradientBlob tone="rust" className="right-[-8%] top-[35%] size-[24rem]" />
+      <div aria-hidden className="pattern-jaguar absolute inset-0 -z-10 opacity-[0.05]" />
 
       <Container className="relative grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
         <div className="flex flex-col items-start gap-8">
@@ -62,7 +60,7 @@ export function Hero() {
             className="inline-flex items-center gap-3 rounded-full border border-gold/30 bg-surface/60 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-gold shadow-sm"
           >
             <Sparkles className="size-3.5" />
-            Luxury Nail Studio
+            Studio Premium de Unghii
           </motion.span>
 
           <motion.h1
@@ -72,9 +70,9 @@ export function Hero() {
             variants={fadeUp}
             className="font-display text-6xl leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
           >
-            Luxury Nails
+            Unghii de Lux
             <br />
-            <span className="italic text-gradient-gold">&amp; Pedicure</span>
+            <span className="italic text-gradient-gold">&amp; Design Inclus</span>
           </motion.h1>
 
           <motion.p
@@ -84,8 +82,8 @@ export function Hero() {
             variants={fadeUp}
             className="max-w-md text-base leading-relaxed text-muted sm:text-lg"
           >
-            An elevated nail care ritual — meticulous technique, premium products, and an
-            atmosphere designed for you to simply unwind.
+            Alungire pe cartelă lucrată manual, cu design complicat inclus gratuit la fiecare set —
+            tehnică impecabilă, într-o atmosferă în care te poți relaxa complet.
           </motion.p>
 
           <motion.div
@@ -96,10 +94,10 @@ export function Hero() {
             className="flex flex-col gap-4 sm:flex-row"
           >
             <Button href="#contact" size="lg">
-              Book Appointment
+              Programează-te
             </Button>
             <Button href="#gallery" size="lg" variant="secondary" icon={false}>
-              View Gallery
+              Vezi Galeria
             </Button>
           </motion.div>
 
@@ -133,23 +131,38 @@ export function Hero() {
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="relative h-full w-full"
           >
-            <div className="clip-nail absolute inset-0 bg-gradient-to-br from-beige via-peach/70 to-coral/50 shadow-luxury-lg" />
+            <div className="clip-nail absolute inset-0 shadow-luxury-lg">
+              <Image
+                src="/jaguar/blana-jaguar.jpg"
+                alt="Model de unghii print jaguar"
+                fill
+                sizes="(max-width: 1024px) 90vw, 480px"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-amber/35 via-transparent to-rust/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-black/15" />
+            </div>
             <div className="clip-nail absolute inset-[10px] shadow-[inset_0_0_0_1.5px_rgba(255,255,255,0.55)]" />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-              <div className="flex items-center gap-2.5">
-                {swatchOrder.map((key, index) => (
-                  <motion.div
-                    key={key}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 + index * 0.08, duration: 0.5 }}
-                  >
-                    <PolishSwatch hex={categoryColors[key].hex} size="md" />
-                  </motion.div>
-                ))}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+              <div className="glass-panel flex flex-col items-center gap-4 rounded-3xl px-7 py-6 shadow-luxury">
+                <div className="flex items-center gap-2.5">
+                  {swatchOrder.map((key, index) => (
+                    <motion.div
+                      key={key}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + index * 0.08, duration: 0.5 }}
+                    >
+                      <PolishSwatch hex={categoryColors[key].hex} size="md" />
+                    </motion.div>
+                  ))}
+                </div>
+                <span className="font-display text-lg italic text-foreground">
+                  Nuanța ta, perfectă
+                </span>
               </div>
-              <span className="font-display text-xl italic text-ink/45">Your shade, perfected</span>
             </div>
 
             <motion.div
@@ -162,8 +175,8 @@ export function Hero() {
                 <Star className="size-4 fill-gold" />
               </div>
               <div className="leading-tight">
-                <p className="text-sm font-medium text-foreground">5.0 Rating</p>
-                <p className="text-xs text-muted">3,000+ clients</p>
+                <p className="text-sm font-medium text-foreground">Rating 5.0</p>
+                <p className="text-xs text-muted">1.500+ cliente</p>
               </div>
             </motion.div>
 
@@ -173,8 +186,8 @@ export function Hero() {
               style={{ transform: "translateZ(40px)" }}
               className="glass-panel absolute -right-6 bottom-16 flex flex-col gap-1 rounded-2xl px-5 py-4 shadow-luxury"
             >
-              <p className="font-display text-xl text-foreground">8+ Years</p>
-              <p className="text-xs uppercase tracking-wide text-muted">of Craftsmanship</p>
+              <p className="font-display text-xl text-foreground">2+ Ani</p>
+              <p className="text-xs uppercase tracking-wide text-muted">de Experiență</p>
             </motion.div>
           </motion.div>
         </motion.div>

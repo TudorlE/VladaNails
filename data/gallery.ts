@@ -1,26 +1,76 @@
 import type { GalleryImage } from "./types";
 
 /**
- * Portfolio gallery. Drop client photos into /public/gallery and set `src`
- * (e.g. "/gallery/01.jpg") — entries without `src` render an elegant
- * placeholder so the layout always looks complete before real photos exist.
+ * Portofoliu real — lucrări foto ale studioului. Pentru a adăuga poze noi,
+ * pune fișierul în /public/gallery și adaugă o intrare aici.
  */
 export const gallery: GalleryImage[] = [
-  { id: "g1", category: "Nail Art", title: "Hand-painted florals", span: "tall" },
-  { id: "g2", category: "Manicure", title: "Russian manicure, nude", span: "normal" },
-  { id: "g3", category: "Extensions", title: "Sculpted almond set", span: "wide" },
-  { id: "g4", category: "Design", title: "French, reimagined", span: "normal" },
-  { id: "g5", category: "Pedicure", title: "Luxury spa pedicure", span: "normal" },
-  { id: "g6", category: "Nail Art", title: "Fine line abstract", span: "tall" },
-  { id: "g7", category: "Manicure", title: "Glazed chrome finish", span: "normal" },
-  { id: "g8", category: "Extensions", title: "Coffin shape, gel", span: "normal" },
-  { id: "g9", category: "Design", title: "Cat eye shimmer", span: "wide" },
-  { id: "g10", category: "Manicure", title: "Classic red, glossy", span: "normal" },
-  { id: "g11", category: "Pedicure", title: "Soft pink gel pedicure", span: "tall" },
-  { id: "g12", category: "Nail Art", title: "Minimalist line art", span: "normal" },
+  {
+    id: "g1",
+    category: "Design",
+    title: "French cu accent leopard & cristale",
+    src: "/gallery/design-leopard-funda.jpg",
+    span: "wide",
+  },
+  {
+    id: "g2",
+    category: "Alungire",
+    title: "Alungire cartelă, albastru oțel",
+    src: "/gallery/alungire-albastru.jpg",
+    span: "normal",
+  },
+  {
+    id: "g3",
+    category: "Alungire",
+    title: "Alungire cartelă, nude glossy",
+    src: "/gallery/alungire-nude.jpg",
+    span: "tall",
+  },
+  {
+    id: "g4",
+    category: "Ombre",
+    title: "Ombre mentol",
+    src: "/gallery/ombre-mentol.jpg",
+    span: "normal",
+  },
+  {
+    id: "g5",
+    category: "French",
+    title: "French lung, bază nude",
+    src: "/gallery/french-nude-lung.jpg",
+    span: "tall",
+  },
+  {
+    id: "g6",
+    category: "Design",
+    title: "Marmură neagră & funde 3D",
+    src: "/gallery/design-funda-marmura.jpg",
+    span: "normal",
+  },
+  {
+    id: "g7",
+    category: "Alungire",
+    title: "Roșu clasic, glossy",
+    src: "/gallery/alungire-rosu.jpg",
+    span: "tall",
+  },
+  {
+    id: "g8",
+    category: "Design",
+    title: "Vârf glitter roz, bază nude",
+    src: "/gallery/design-glitter-roz.jpg",
+    span: "wide",
+  },
+  {
+    id: "g9",
+    category: "French",
+    title: "French clasic",
+    src: "/gallery/french-clasic.jpg",
+    span: "normal",
+  },
 ];
 
 export const galleryCategories = [
-  "All",
+  "Toate",
   ...Array.from(new Set(gallery.map((item) => item.category))),
 ];

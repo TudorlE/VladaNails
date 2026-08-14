@@ -16,6 +16,8 @@
   --color-gold-light: #eccf9a;
   --color-espresso: #241a10;
   --color-wine: #7c3048;
+  --color-amber: #c67a2e;
+  --color-rust: #9c4620;
   --color-ink: #1c1712;
 
   /* Theme-dependent surface tokens */
@@ -50,6 +52,8 @@
   --color-gold-light: var(--color-gold-light);
   --color-espresso: var(--color-espresso);
   --color-wine: var(--color-wine);
+  --color-amber: var(--color-amber);
+  --color-rust: var(--color-rust);
   --color-ink: var(--color-ink);
   --color-muted: var(--color-muted);
 
@@ -59,7 +63,7 @@
   --color-surface-muted: var(--surface-muted);
   --color-border-subtle: var(--border-subtle);
 
-  --font-display: var(--font-cormorant);
+  --font-display: var(--font-fraunces);
   --font-sans: var(--font-jost);
 
   --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -150,6 +154,19 @@ body {
   mix-blend-mode: soft-light;
 }
 
+/* Jaguar print — the site's signature texture. Irregular scattered blotches
+   (each built from two overlapping off-center ellipses so it reads as an
+   uneven ink-blot spot, not a symmetric shape) rather than a radial
+   "rosette" cluster, which tiled repeatedly read as a flower instead of an
+   animal print. Consumers control opacity/scale with Tailwind utilities
+   (e.g. `pattern-jaguar opacity-[0.06]` for a subtle wash, or higher
+   opacity + larger [background-size] for a bold accent band). */
+.pattern-jaguar {
+  background-repeat: repeat;
+  background-size: 72px 72px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cg fill='%23241a10'%3E%3Cellipse cx='14' cy='16' rx='5' ry='3.5' transform='rotate(20 14 16)' opacity='0.85'/%3E%3Cellipse cx='17.5' cy='13.5' rx='3.2' ry='2.3' transform='rotate(-30 17.5 13.5)' opacity='0.75'/%3E%3Cellipse cx='49' cy='9' rx='4' ry='3' transform='rotate(-15 49 9)' opacity='0.85'/%3E%3Cellipse cx='45.5' cy='11.5' rx='2.8' ry='2' transform='rotate(50 45.5 11.5)' opacity='0.7'/%3E%3Cellipse cx='61' cy='41' rx='5.5' ry='4' transform='rotate(60 61 41)' opacity='0.85'/%3E%3Cellipse cx='64' cy='38' rx='3' ry='2.3' transform='rotate(-10 64 38)' opacity='0.75'/%3E%3Cellipse cx='19' cy='52' rx='4.5' ry='3' transform='rotate(-40 19 52)' opacity='0.85'/%3E%3Cellipse cx='22.5' cy='55' rx='2.5' ry='1.8' transform='rotate(20 22.5 55)' opacity='0.7'/%3E%3Cellipse cx='41' cy='61' rx='4' ry='3.5' transform='rotate(10 41 61)' opacity='0.85'/%3E%3Cellipse cx='44.5' cy='58.5' rx='2.6' ry='1.8' transform='rotate(-50 44.5 58.5)' opacity='0.7'/%3E%3Cellipse cx='4' cy='40' rx='2.8' ry='2' transform='rotate(35 4 40)' opacity='0.65'/%3E%3Cellipse cx='34' cy='34' rx='2.4' ry='1.8' transform='rotate(-25 34 34)' opacity='0.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
 /* Elegant thin scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -168,19 +185,10 @@ body {
 }
 
 .text-gradient-gold {
-  background: linear-gradient(
-    100deg,
-    var(--color-gold-dark) 0%,
-    var(--color-gold) 22%,
-    var(--color-gold-light) 45%,
-    var(--color-gold) 68%,
-    var(--color-gold-dark) 100%
-  );
-  background-size: 220% 100%;
+  background: linear-gradient(100deg, var(--color-gold-dark) 0%, var(--color-gold-light) 55%, var(--color-gold) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: var(--animate-shimmer);
 }
 
 .shadow-gold-glow {

@@ -61,12 +61,12 @@ export function Lightbox({
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label="Gallery image preview"
+          aria-label="Previzualizare imagine din galerie"
         >
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close preview"
+            aria-label="Închide previzualizarea"
             className="absolute right-5 top-5 flex size-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-gold hover:text-gold"
           >
             <X className="size-5" />
@@ -78,7 +78,7 @@ export function Lightbox({
               event.stopPropagation();
               goPrev();
             }}
-            aria-label="Previous image"
+            aria-label="Imaginea anterioară"
             className="absolute left-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-gold hover:text-gold sm:left-6"
           >
             <ChevronLeft className="size-5" />
@@ -90,7 +90,7 @@ export function Lightbox({
               event.stopPropagation();
               goNext();
             }}
-            aria-label="Next image"
+            aria-label="Imaginea următoare"
             className="absolute right-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-gold hover:text-gold sm:right-6"
           >
             <ChevronRight className="size-5" />

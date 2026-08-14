@@ -30,9 +30,9 @@ export function Testimonials() {
     <section id="testimonials" className="relative bg-background py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
-          eyebrow="Client Love"
-          title="Words from our clients"
-          description="Real experiences from the women who trust us with their hands and feet, week after week."
+          eyebrow="Recenzii"
+          title="Ce spun clientele noastre"
+          description="Experiențe reale de la femeile care ne încredințează mâinile lor, săptămână de săptămână."
         />
 
         <div
@@ -79,7 +79,7 @@ export function Testimonials() {
             <button
               type="button"
               onClick={() => goTo(index - 1)}
-              aria-label="Previous testimonial"
+              aria-label="Recenzia anterioară"
               className="flex size-10 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors hover:border-gold hover:text-gold dark:border-foreground/15"
             >
               <ChevronLeft className="size-4" />
@@ -90,7 +90,7 @@ export function Testimonials() {
                 <button
                   key={testimonial.id}
                   onClick={() => goTo(i)}
-                  aria-label={`Go to testimonial ${i + 1}`}
+                  aria-label={`Vezi recenzia ${i + 1}`}
                   className={cn(
                     "h-1.5 rounded-full transition-all duration-500",
                     i === index ? "w-6 bg-gold" : "w-1.5 bg-ink/15 dark:bg-foreground/20",
@@ -102,7 +102,7 @@ export function Testimonials() {
             <button
               type="button"
               onClick={() => goTo(index + 1)}
-              aria-label="Next testimonial"
+              aria-label="Recenzia următoare"
               className="flex size-10 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors hover:border-gold hover:text-gold dark:border-foreground/15"
             >
               <ChevronRight className="size-4" />

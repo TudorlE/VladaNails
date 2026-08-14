@@ -25,12 +25,14 @@ export interface BusinessInfo {
 
 export interface Service {
   id: string;
-  category: "manicure" | "pedicure" | "extensions" | "design" | "spa";
+  category: "alungire" | "corectie" | "design" | "french" | "finisaje";
   title: string;
   description: string;
   duration: string;
   price: number;
   priceLabel?: string;
+  /** Overrides the auto "price lei" text entirely, e.g. "Gratis". */
+  displayPrice?: string;
   icon: string;
   featured?: boolean;
 }
@@ -39,6 +41,8 @@ export interface PricingItem {
   name: string;
   price: number;
   priceLabel?: string;
+  /** Overrides the auto "price lei" text entirely, e.g. "Gratis". */
+  displayPrice?: string;
   duration?: string;
   note?: string;
 }

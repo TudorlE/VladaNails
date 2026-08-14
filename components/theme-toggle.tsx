@@ -25,7 +25,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Toggle dark mode"
+      aria-label="Comută modul întunecat"
       className={cn(
         "relative flex size-10 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors duration-300 hover:border-gold hover:text-gold dark:border-foreground/15",
         className,

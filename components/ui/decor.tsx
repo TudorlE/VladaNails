@@ -6,6 +6,9 @@ const tones = {
   coral:
     "radial-gradient(circle at 35% 35%, rgba(240,135,111,0.45), rgba(247,191,168,0.3) 45%, transparent 72%)",
   gold: "radial-gradient(circle at 30% 30%, rgba(184,137,74,0.4), rgba(236,220,199,0.3) 45%, transparent 72%)",
+  amber:
+    "radial-gradient(circle at 30% 30%, rgba(198,122,46,0.45), rgba(236,220,199,0.3) 45%, transparent 72%)",
+  rust: "radial-gradient(circle at 35% 35%, rgba(156,70,32,0.4), rgba(198,122,46,0.28) 45%, transparent 72%)",
 } as const;
 
 export function GradientBlob({
@@ -30,12 +33,25 @@ export function GradientBlob({
   );
 }
 
-export function OrnamentDivider({ className }: { className?: string }) {
+const dividerTones = {
+  gold: { solid: "bg-gold", fade: "to-gold/70" },
+  ink: { solid: "bg-ink", fade: "to-ink/70" },
+  ivory: { solid: "bg-ivory", fade: "to-ivory/80" },
+} as const;
+
+export function OrnamentDivider({
+  className,
+  tone = "gold",
+}: {
+  className?: string;
+  tone?: keyof typeof dividerTones;
+}) {
+  const { solid, fade } = dividerTones[tone];
   return (
     <div className={cn("flex items-center justify-center gap-3", className)} aria-hidden>
-      <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold/70" />
-      <span className="size-1.5 rotate-45 bg-gold" />
-      <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold/70" />
+      <span className={cn("h-px w-12 bg-gradient-to-r from-transparent", fade)} />
+      <span className={cn("size-1.5 rotate-45", solid)} />
+      <span className={cn("h-px w-12 bg-gradient-to-l from-transparent", fade)} />
     </div>
   );
 }

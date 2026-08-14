@@ -19,9 +19,9 @@ export function Pricing() {
     <section id="pricing" className="relative bg-surface-muted/40 py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
-          eyebrow="Price List"
-          title="Investment in beautiful hands"
-          description="Transparent, all-inclusive pricing across every service. Final price may vary slightly with nail length and design complexity."
+          eyebrow="Lista de Prețuri"
+          title="Investiție în mâini frumoase"
+          description="Prețuri transparente, în lei. Designul complicat este mereu inclus gratuit — plătești doar mărimea alungirii."
         />
 
         <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border-subtle bg-surface p-1.5 shadow-sm">
@@ -71,8 +71,9 @@ export function Pricing() {
                     <span className="h-px flex-1 translate-y-[-4px] border-b border-dotted border-ink/25 dark:border-foreground/25" />
                     <span className="whitespace-nowrap text-sm text-muted">{item.duration}</span>
                     <span className={cn("whitespace-nowrap font-display text-lg", activeColor.text)}>
-                      {item.priceLabel ? `${item.priceLabel} ` : ""}
-                      {item.price} lei
+                      {item.displayPrice
+                        ? item.displayPrice
+                        : `${item.priceLabel ? `${item.priceLabel} ` : ""}${item.price} lei`}
                     </span>
                   </li>
                 ))}
@@ -82,7 +83,7 @@ export function Pricing() {
         </div>
 
         <Button href="#contact" size="lg">
-          Book Appointment
+          Programează-te
         </Button>
       </Container>
     </section>

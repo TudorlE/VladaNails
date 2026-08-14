@@ -11,12 +11,12 @@ import { getCategoryColor } from "@/data/category-colors";
 import { PolishSwatch } from "@/components/ui/polish-swatch";
 
 export function Gallery() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Toate");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const filtered = useMemo(
     () =>
-      activeCategory === "All"
+      activeCategory === "Toate"
         ? gallery
         : gallery.filter((item) => item.category === activeCategory),
     [activeCategory],
@@ -26,9 +26,9 @@ export function Gallery() {
     <section id="gallery" className="relative bg-background py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
-          eyebrow="Portfolio"
-          title="A gallery of finished sets"
-          description="A curated look at recent work — new photos are added regularly. Tap any image for a closer look."
+          eyebrow="Portofoliu"
+          title="Un showroom cu seturi reale"
+          description="Lucrări recente din studio — poze noi se adaugă constant. Atinge orice imagine pentru a o vedea în detaliu."
         />
 
         <div className="flex flex-wrap items-center justify-center gap-2">
@@ -43,7 +43,7 @@ export function Gallery() {
                   : "border-border-subtle text-muted hover:border-gold/60 hover:text-gold",
               )}
             >
-              {category !== "All" ? (
+              {category !== "Toate" ? (
                 <PolishSwatch hex={getCategoryColor(category).hex} size="xs" />
               ) : null}
               {category}

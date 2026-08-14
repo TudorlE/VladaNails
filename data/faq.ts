@@ -3,44 +3,44 @@ import type { FaqItem } from "./types";
 export const faqs: FaqItem[] = [
   {
     id: "f1",
-    question: "How long does a manicure or pedicure last?",
+    question: "Cât ține o alungire sau o corecție?",
     answer:
-      "A gel manicure typically lasts 2–3 weeks, and BIAB or extensions can last 3–4 weeks with proper care. Our pedicures hold their finish beautifully for 4–6 weeks thanks to the products we use.",
+      "O alungire pe cartelă ține de obicei 3-4 săptămâni cu îngrijire corectă. Recomandăm o corecție la 3-4 săptămâni pentru un set mereu impecabil.",
   },
   {
     id: "f2",
-    question: "How should I prepare for my appointment?",
+    question: "Cum mă pregătesc pentru programare?",
     answer:
-      "Arrive with clean, polish-free nails if possible — though we're happy to remove existing polish or gel for you. We recommend avoiding hand cream right before your visit for the best product adhesion.",
+      "Vino cu unghiile curate, fără lac dacă se poate — dar te putem ajuta oricum cu îndepărtarea gel-ului existent. Evită crema de mâini chiar înainte de vizită, pentru o aderență mai bună a produselor.",
   },
   {
     id: "f3",
-    question: "Can I cancel or reschedule my appointment?",
+    question: "Pot anula sau reprograma?",
     answer:
-      "Absolutely. We ask for at least 24 hours' notice so we can offer your spot to another client. You can reschedule directly via Instagram, WhatsApp, or phone.",
+      "Sigur. Te rugăm să anunți cu cel puțin 24 de ore înainte, ca să putem oferi locul altei cliente. Reprogramarea se face direct pe Instagram, WhatsApp sau telefon.",
   },
   {
     id: "f4",
-    question: "Do you offer gift cards?",
+    question: "Designul complicat costă extra?",
     answer:
-      "Yes — digital and printed gift cards are available in any amount, perfect for birthdays, holidays, or simply treating someone to a little luxury.",
+      "Nu — designul complicat (funde 3D, marmură, cristale, chrome) este mereu inclus gratuit la fiecare set. Plătești doar pentru mărimea alungirii.",
   },
   {
     id: "f5",
-    question: "What products and equipment do you use?",
+    question: "Ce produse și instrumente folosiți?",
     answer:
-      "We work exclusively with premium, salon-grade gel and care brands, and every tool is fully sterilized between clients using hospital-grade sterilization equipment.",
+      "Lucrăm exclusiv cu produse premium de salon, iar fiecare instrument este complet sterilizat între cliente, la standard medical.",
   },
   {
     id: "f6",
-    question: "Do you accommodate sensitive nails or skin conditions?",
+    question: "Vă adaptați la unghii sensibile?",
     answer:
-      "Yes. Let us know about any sensitivities when booking and we'll tailor products and technique accordingly — your comfort and nail health always come first.",
+      "Da. Spune-ne despre orice sensibilitate la programare și adaptăm produsele și tehnica — confortul și sănătatea unghiilor tale contează cel mai mult.",
   },
   {
     id: "f7",
-    question: "How far in advance should I book?",
+    question: "Cu cât timp înainte trebuie să mă programez?",
     answer:
-      "We recommend booking 3–5 days ahead, and 1–2 weeks ahead for weekends or holiday periods, as appointments fill quickly.",
+      "Recomandăm o programare cu 3-5 zile înainte, iar pentru weekend sau perioade aglomerate, cu 1-2 săptămâni înainte — locurile se ocupă rapid.",
   },
 ];

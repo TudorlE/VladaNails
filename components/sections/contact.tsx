@@ -7,29 +7,35 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { SocialIcon } from "@/components/ui/social-icon";
+import { BookingCalendar } from "@/components/booking/booking-calendar";
 import { business } from "@/data/business";
 import { socials } from "@/data/socials";
 
 export function Contact() {
-  const today = new Date().toLocaleDateString("en-US", { weekday: "long" });
+  const today = new Date().toLocaleDateString("ro-RO", { weekday: "long" });
+  const todayCapitalized = today.charAt(0).toUpperCase() + today.slice(1);
 
   return (
     <section id="contact" className="relative overflow-hidden bg-background py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
-          eyebrow="Get in Touch"
-          title="Reserve your appointment"
-          description="We'd love to welcome you to the studio. Reach out directly or find us using the details below."
+          eyebrow="Contactează-ne"
+          title="Rezervă-ți programarea"
+          description="Alege data și ora direct din calendar, sau scrie-ne printr-una din metodele de mai jos."
         />
+
+        <Reveal className="w-full">
+          <BookingCalendar />
+        </Reveal>
 
         <div className="grid w-full gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal direction="right" className="flex flex-col gap-6">
             <div className="flex flex-col gap-5 rounded-[2rem] border border-border-subtle bg-surface p-8 shadow-luxury sm:p-10">
-              <ContactRow icon={Phone} label="Phone" value={business.phoneDisplay} href={`tel:${business.phone}`} />
+              <ContactRow icon={Phone} label="Telefon" value={business.phoneDisplay} href={`tel:${business.phone}`} />
               <ContactRow icon={Mail} label="Email" value={business.email} href={`mailto:${business.email}`} />
               <ContactRow
                 icon={MapPin}
-                label="Studio Address"
+                label="Adresa Studioului"
                 value={business.address}
                 href={business.mapLinkUrl}
                 external
@@ -41,7 +47,7 @@ export function Contact() {
                 </div>
                 <div className="flex w-full flex-col gap-1.5">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted">
-                    Working Hours
+                    Program de Lucru
                   </p>
                   <ul className="flex flex-col gap-1">
                     {business.hours.map((entry) => (
@@ -51,7 +57,9 @@ export function Contact() {
                       >
                         <span
                           className={
-                            entry.day === today ? "font-medium text-gold" : "text-foreground/80"
+                            entry.day === todayCapitalized
+                              ? "font-medium text-gold"
+                              : "text-foreground/80"
                           }
                         >
                           {entry.day}
@@ -80,13 +88,13 @@ export function Contact() {
             </div>
 
             <Button href={`tel:${business.phone}`} size="lg" className="w-full">
-              Book Now
+              Programează-te Acum
             </Button>
           </Reveal>
 
           <Reveal delay={0.1} className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-border-subtle shadow-luxury">
             <iframe
-              title={`${business.name} location map`}
+              title={`Locația ${business.name}`}
               src={business.mapEmbedUrl}
               className="absolute inset-0 h-full w-full grayscale-[35%] contrast-[1.05]"
               loading="lazy"
