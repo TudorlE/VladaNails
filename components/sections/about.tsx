@@ -4,7 +4,7 @@ import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal, RevealGroup, revealItem } from "@/components/ui/reveal";
-import { GradientBlob, CornerOrnament } from "@/components/ui/decor";
+import { GradientBlob, CornerOrnament, SectionSeam } from "@/components/ui/decor";
 import { PolishSwatch } from "@/components/ui/polish-swatch";
 import { motion } from "framer-motion";
 import { about } from "@/data/about";
@@ -13,6 +13,7 @@ import { categoryColors } from "@/data/category-colors";
 export function About() {
   return (
     <section id="about" className="relative overflow-hidden bg-surface-muted/40 py-24 sm:py-32">
+      <SectionSeam color="var(--background)" />
       <GradientBlob tone="amber" className="right-[-6%] top-[10%] size-80 opacity-70" />
 
       <Container className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">

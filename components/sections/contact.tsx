@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
+import { SectionSeam } from "@/components/ui/decor";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { SocialIcon } from "@/components/ui/social-icon";
@@ -14,6 +15,7 @@ import { socials } from "@/data/socials";
 export function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden bg-background py-24 sm:py-32">
+      <SectionSeam color="var(--surface-muted-blend)" />
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Contactează-ne"

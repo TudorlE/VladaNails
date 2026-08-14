@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
+import { SectionSeam } from "@/components/ui/decor";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 import { faqs } from "@/data/faq";
@@ -14,6 +15,7 @@ export function FAQ() {
 
   return (
     <section className="relative bg-surface-muted/40 py-24 sm:py-32">
+      <SectionSeam color="var(--background)" />
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Bine de Știut"

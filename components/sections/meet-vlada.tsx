@@ -5,12 +5,13 @@ import { motion } from "framer-motion";
 import { Award, Quote, User } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal, RevealGroup, revealItem } from "@/components/ui/reveal";
-import { GradientBlob } from "@/components/ui/decor";
+import { GradientBlob, SectionSeam } from "@/components/ui/decor";
 import { vladaProfile, certifications, stats } from "@/data/vlada";
 
 export function MeetVlada() {
   return (
     <section id="vlada" className="relative overflow-hidden bg-surface-muted/40 py-24 sm:py-32">
+      <SectionSeam color="var(--color-ink)" className="h-28 sm:h-36" />
       <GradientBlob tone="rust" className="left-[-8%] top-[15%] size-96 opacity-60" />
 
       <Container className="grid items-start gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">

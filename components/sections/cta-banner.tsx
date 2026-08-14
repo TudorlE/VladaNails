@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { OrnamentDivider } from "@/components/ui/decor";
+import { OrnamentDivider, SectionSeam } from "@/components/ui/decor";
 
 export function CTABanner() {
   return (
@@ -18,6 +18,8 @@ export function CTABanner() {
         aria-hidden
         className="absolute inset-0 [background:radial-gradient(55%_75%_at_50%_50%,rgba(20,14,8,0.72)_0%,rgba(20,14,8,0.4)_60%,rgba(20,14,8,0.05)_88%)]"
       />
+      <SectionSeam color="var(--background)" className="h-28 sm:h-36" />
+      <SectionSeam color="var(--color-ink)" position="bottom" className="h-28 sm:h-36" />
       <Container className="relative flex flex-col items-center gap-8 text-center">
         <Reveal>
           <OrnamentDivider tone="ivory" />

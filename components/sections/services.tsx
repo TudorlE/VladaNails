@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
+import { SectionSeam } from "@/components/ui/decor";
 import { RevealGroup, revealItem } from "@/components/ui/reveal";
 import { DynamicIcon } from "@/components/ui/icon-map";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
 export function Services() {
   return (
     <section id="services" className="relative bg-background py-24 sm:py-32">
+      <SectionSeam color="var(--surface-muted-blend)" />
       <Container className="flex flex-col items-center gap-16">
         <SectionTitle
           eyebrow="Servicii Semnătură"

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
+import { SectionSeam } from "@/components/ui/decor";
 import { GalleryTile } from "@/components/gallery/gallery-tile";
 import { Lightbox } from "@/components/gallery/lightbox";
 import { cn } from "@/lib/utils";
@@ -24,6 +25,7 @@ export function Gallery() {
 
   return (
     <section id="gallery" className="relative bg-background py-24 sm:py-32">
+      <SectionSeam color="var(--surface-muted-blend)" />
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Portofoliu"

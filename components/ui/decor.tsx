@@ -56,6 +56,38 @@ export function OrnamentDivider({
   );
 }
 
+/* Softens the hard color-block cut where one section's background meets
+   the next by fading the incoming/outgoing edge through the neighbor's
+   color instead of switching instantly. `color` should be the neighbor
+   section's effective flat color (e.g. `var(--background)`,
+   `var(--surface-muted-blend)`, `var(--color-ink)`). */
+export function SectionSeam({
+  color,
+  position = "top",
+  className,
+}: {
+  color: string;
+  position?: "top" | "bottom";
+  className?: string;
+}) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute inset-x-0 h-20 sm:h-28",
+        position === "top" ? "top-0" : "bottom-0",
+        className,
+      )}
+      style={{
+        background:
+          position === "top"
+            ? `linear-gradient(to bottom, ${color}, transparent)`
+            : `linear-gradient(to top, ${color}, transparent)`,
+      }}
+    />
+  );
+}
+
 export function NoisyGrain({ className }: { className?: string }) {
   return (
     <svg

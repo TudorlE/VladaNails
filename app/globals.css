@@ -29,6 +29,13 @@
   --border-subtle: rgba(28, 23, 18, 0.09);
   --shadow-color: 20 14 8;
   --gold-glow: 184 137 74;
+
+  /* Precomputed flat equivalent of `bg-surface-muted/40` sections (that
+     class renders as a translucent surface-muted over the page background).
+     Section-seam gradients need an opaque color to fade from/to, so this
+     mirrors the same blend as a solid. Resolves per-theme automatically
+     since it references --surface-muted/--background, not fixed values. */
+  --surface-muted-blend: color-mix(in srgb, var(--surface-muted) 40%, var(--background));
 }
 
 .dark {

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
+import { SectionSeam } from "@/components/ui/decor";
 import { cn } from "@/lib/utils";
 import { testimonials } from "@/data/testimonials";
 
@@ -28,6 +29,7 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="relative bg-background py-24 sm:py-32">
+      <SectionSeam color="var(--surface-muted-blend)" />
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Recenzii"
