@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vlada Nails
 
-## Getting Started
+Site-ul studioului de unghii Vlada Nails — Next.js 16, Tailwind CSS 4, Framer Motion.
 
-First, run the development server:
+## Pornire locală
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deschide [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Conectarea programărilor la Gmail
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Când o clientă trimite o cerere din calendarul de programare, site-ul poate trimite automat un
+email frumos formatat către adresa de Gmail a studioului (`email` din `data/business.ts`), pe
+lângă mesajul de WhatsApp care se deschide oricum. Fără cele două chei de mai jos, emailul pur și
+simplu nu se trimite — WhatsApp continuă să funcționeze normal, deci site-ul e funcțional și fără
+acest pas.
 
-## Learn More
+### 1. Generează o parolă de aplicație Gmail
 
-To learn more about Next.js, take a look at the following resources:
+Emailul se trimite din contul Gmail al studioului folosind o **parolă de aplicație** (nu parola
+obișnuită de logare — Google nu o mai acceptă pentru aplicații externe).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Mergi pe [myaccount.google.com/security](https://myaccount.google.com/security) și
+   activează **Verificarea în 2 pași** dacă nu e deja activă (obligatoriu pentru pasul următor).
+2. Mergi pe [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+3. Creează o parolă nouă (orice nume, ex. „Vlada Nails Site”). Google îți dă un cod de
+   16 caractere, de tipul `abcd efgh ijkl mnop`.
+4. Copiază acel cod — e afișat o singură dată.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Adaugă cheile în proiect
 
-## Deploy on Vercel
+Local (pentru testare pe calculator), copiază `.env.example` în `.env.local`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+cp .env.example .env.local
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+și completează:
+
+```
+GMAIL_USER=adresa.ta@gmail.com
+GMAIL_APP_PASSWORD=abcd efgh ijkl mnop
+```
+
+`.env.local` nu se urcă niciodată pe GitHub (e ignorat automat) — cheile rămân private.
+
+### 3. Adaugă cheile și pe site-ul live
+
+Pe calculatorul tău, `.env.local` funcționează doar pentru `npm run dev`. Pentru ca emailurile să
+meargă și pe site-ul public, aceleași două variabile (`GMAIL_USER`, `GMAIL_APP_PASSWORD`) trebuie
+adăugate și în platforma unde e găzduit site-ul (ex. Vercel → Project → Settings →
+Environment Variables), apoi trebuie redeploy-uit site-ul.
+
+## Editare conținut
+
+Aproape tot conținutul (prețuri, servicii, program, contact, galerie, recenzii) e în fișiere
+separate din `data/`, editabile fără să atingi codul componentelor.

@@ -86,6 +86,7 @@ export function BookingCalendar() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const maxMonth = new Date(today.getFullYear(), today.getMonth() + 2, 1);
   const canGoPrev = visibleMonth.getFullYear() > today.getFullYear() || visibleMonth.getMonth() > today.getMonth();
@@ -100,19 +101,38 @@ export function BookingCalendar() {
   const selectedService = services.find((s) => s.id === serviceId);
   const isFormComplete = Boolean(selectedDate && selectedTime && name.trim() && phone.trim());
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isFormComplete || !selectedDate || !selectedTime) return;
+    setSending(true);
 
     const dateLabel = selectedDate.toLocaleDateString("ro-RO", {
       weekday: "long",
       day: "numeric",
       month: "long",
     });
+
+    try {
+      await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service: selectedService?.title ?? "",
+          dateLabel,
+          time: selectedTime,
+          name,
+          phone,
+        }),
+      });
+    } catch {
+      // Emailul e un canal suplimentar — WhatsApp rămâne metoda de rezervă.
+    }
+
     const message = `Bună! Aș vrea să fac o programare la ${business.name}.\n\nServiciu: ${selectedService?.title ?? ""}\nData: ${dateLabel}\nOra: ${selectedTime}\nNume: ${name}\nTelefon: ${phone}`;
     const waNumber = business.phone.replace(/\D/g, "");
     const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(waLink, "_blank", "noopener,noreferrer");
+    setSending(false);
     setSubmitted(true);
   };
 
@@ -124,8 +144,8 @@ export function BookingCalendar() {
         </div>
         <h3 className="font-display text-2xl text-foreground">Cererea a fost trimisă</h3>
         <p className="max-w-sm text-sm leading-relaxed text-muted">
-          Am deschis WhatsApp cu detaliile completate. Vlada îți va confirma programarea cât mai
-          curând — locul e rezervat definitiv doar după confirmare.
+          Am deschis WhatsApp cu detaliile completate și am trimis un email către studio. Vlada îți
+          va confirma programarea cât mai curând — locul e rezervat definitiv doar după confirmare.
         </p>
         <button
           type="button"
@@ -327,15 +347,15 @@ export function BookingCalendar() {
 
         <button
           type="button"
-          disabled={!isFormComplete}
+          disabled={!isFormComplete || sending}
           onClick={handleSubmit}
           className="group relative isolate mt-auto flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-ink text-sm font-medium text-ivory shadow-luxury transition-all duration-500 hover:bg-gold hover:text-ink disabled:pointer-events-none disabled:opacity-40 dark:bg-gold dark:text-ink"
         >
           <MessageCircle className="size-4" />
-          Trimite cererea de programare
+          {sending ? "Se trimite…" : "Trimite cererea de programare"}
         </button>
         <p className="text-center text-[11px] leading-relaxed text-muted">
-          Cererea se trimite pe WhatsApp — programarea e confirmată manual de studio.
+          Cererea ajunge pe email și WhatsApp — programarea e confirmată manual de studio.
         </p>
       </div>
     </div>

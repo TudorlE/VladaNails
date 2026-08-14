@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Button } from "@/components/ui/button";
@@ -12,9 +12,6 @@ import { business } from "@/data/business";
 import { socials } from "@/data/socials";
 
 export function Contact() {
-  const today = new Date().toLocaleDateString("ro-RO", { weekday: "long" });
-  const todayCapitalized = today.charAt(0).toUpperCase() + today.slice(1);
-
   return (
     <section id="contact" className="relative overflow-hidden bg-background py-24 sm:py-32">
       <Container className="flex flex-col items-center gap-14">
@@ -40,36 +37,6 @@ export function Contact() {
                 href={business.mapLinkUrl}
                 external
               />
-
-              <div className="flex items-start gap-4 border-t border-border-subtle pt-5">
-                <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
-                  <Clock className="size-4" />
-                </div>
-                <div className="flex w-full flex-col gap-1.5">
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted">
-                    Program de Lucru
-                  </p>
-                  <ul className="flex flex-col gap-1">
-                    {business.hours.map((entry) => (
-                      <li
-                        key={entry.day}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span
-                          className={
-                            entry.day === todayCapitalized
-                              ? "font-medium text-gold"
-                              : "text-foreground/80"
-                          }
-                        >
-                          {entry.day}
-                        </span>
-                        <span className="text-muted">{entry.hours}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
 
               <div className="flex items-center gap-3 border-t border-border-subtle pt-5">
                 {socials.map((social) => (

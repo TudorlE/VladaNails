@@ -1,7 +1,6 @@
 import type { SocialLink } from "./types";
 
 export const socials: SocialLink[] = [
-  { name: "Instagram", href: "https://instagram.com/vladanails", icon: "instagram" },
-  { name: "Facebook", href: "https://facebook.com/vladanails", icon: "facebook" },
-  { name: "TikTok", href: "https://tiktok.com/@vladanails", icon: "tiktok" },
+  { name: "Instagram", href: "https://www.instagram.com/nails.by.vladaa/", icon: "instagram" },
+  { name: "TikTok", href: "https://www.tiktok.com/@nails.by.vladaa", icon: "tiktok" },
 ];
