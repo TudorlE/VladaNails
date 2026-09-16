@@ -5,11 +5,13 @@ import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { RevealGroup, revealItem } from "@/components/ui/reveal";
 import { DynamicIcon } from "@/components/ui/icon-map";
+import { SectionSeam } from "@/components/ui/decor";
 import { whyUs } from "@/data/why-us";
 
 export function WhyUs() {
   return (
     <section className="relative overflow-hidden bg-ink py-24 text-ivory sm:py-32">
+      <SectionSeam color="var(--surface-muted-blend)" className="h-28 sm:h-36" />
       <div aria-hidden className="pattern-jaguar absolute inset-0 opacity-[0.06]" />
       <Container className="relative flex flex-col items-center gap-16">
         <SectionTitle

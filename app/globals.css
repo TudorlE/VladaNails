@@ -49,6 +49,32 @@
   --gold-glow: 220 179 116;
 }
 
+/* PAINT Nails London-inspired palette — scoped to specific sections (Hero,
+   Navbar, Booking, Products) per client request, rather than swapped in
+   globally. Overrides the same tokens the rest of the site already reads
+   through Tailwind's `@theme inline` map, so every existing utility class
+   (bg-gold, text-ink, bg-surface, border-border-subtle, font-display, …)
+   automatically re-colors and re-fonts inside `.theme-paint` with no
+   per-component rewrites. Deliberately does NOT respond to `.dark` — the
+   reference site has no dark mode, so this stays cream/maroon regardless
+   of the site-wide theme toggle. */
+.theme-paint {
+  --color-gold: #6c3231;
+  --color-gold-dark: #4f2523;
+  --color-gold-light: #8a5452;
+  --color-ink: #653533;
+  --background: #fef9ed;
+  --foreground: #3a2422;
+  --surface: #fffcf3;
+  --surface-muted: #efe6d3;
+  --color-muted: #8a7159;
+  --border-subtle: rgba(108, 50, 49, 0.16);
+  --shadow-color: 108 50 49;
+  --gold-glow: 108 50 49;
+  --font-display: var(--font-instrument), serif;
+  --font-sans: var(--font-poppins-paint), sans-serif;
+}
+
 @theme inline {
   --color-ivory: var(--color-ivory);
   --color-beige: var(--color-beige);

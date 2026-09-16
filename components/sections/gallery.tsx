@@ -25,7 +25,7 @@ export function Gallery() {
 
   return (
     <section id="gallery" className="relative bg-background py-24 sm:py-32">
-      <SectionSeam color="var(--surface-muted-blend)" />
+      <SectionSeam color="var(--background)" />
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Portofoliu"

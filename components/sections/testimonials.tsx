@@ -1,115 +1,94 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { SectionSeam } from "@/components/ui/decor";
-import { cn } from "@/lib/utils";
 import { testimonials } from "@/data/testimonials";
 
 export function Testimonials() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => {
-      setIndex((current) => (current + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(id);
-  }, [paused]);
-
-  const goTo = (next: number) => {
-    setIndex((next + testimonials.length) % testimonials.length);
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    // Page by the scroller's own visible width (which is sized to show
+    // exactly 3 cards on sm+) rather than one card at a time, so "next"
+    // reveals a whole new set of 3 instead of shifting by one.
+    el.scrollBy({ left: direction * el.clientWidth, behavior: "smooth" });
   };
-
-  const active = testimonials[index];
 
   return (
     <section id="testimonials" className="relative bg-background py-24 sm:py-32">
-      <SectionSeam color="var(--surface-muted-blend)" />
-      <Container className="flex flex-col items-center gap-14">
-        <SectionTitle
-          eyebrow="Recenzii"
-          title="Ce spun clientele noastre"
-          description="Experiențe reale de la femeile care ne încredințează mâinile lor, săptămână de săptămână."
-        />
+      {/* Literal cream, not var(--background): the preceding Hero is
+          .theme-paint-scoped and stays fixed cream regardless of light/dark mode. */}
+      <SectionSeam color="#fef9ed" />
+      <Container className="flex flex-col gap-10">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionTitle
+            align="left"
+            eyebrow="Recenzii"
+            title="Ce spun clientele noastre"
+            description="Experiențe reale de la femeile care ne încredințează mâinile lor, săptămână de săptămână."
+            className="max-w-xl"
+          />
 
-        <div
-          className="relative w-full max-w-2xl"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <Quote className="mx-auto mb-4 size-10 text-gold/40" strokeWidth={1.2} />
-
-          <div className="relative min-h-[280px] sm:min-h-[240px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col items-center gap-6 rounded-[2rem] border border-border-subtle bg-surface px-8 py-10 text-center shadow-luxury sm:px-14 sm:py-12"
-              >
-                <div className="flex gap-1">
-                  {Array.from({ length: active.rating }).map((_, i) => (
-                    <Star key={i} className="size-4 fill-gold text-gold" />
-                  ))}
-                </div>
-                <p className="font-display text-xl leading-relaxed text-foreground sm:text-2xl">
-                  &ldquo;{active.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="flex size-10 items-center justify-center rounded-full bg-gold/15 font-display text-sm text-gold">
-                    {active.initials}
-                  </div>
-                  <div className="text-left leading-tight">
-                    <p className="text-sm font-medium text-foreground">{active.name}</p>
-                    {active.service ? (
-                      <p className="text-xs text-muted">{active.service}</p>
-                    ) : null}
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-6">
+          <div className="hidden items-center gap-2 sm:flex">
             <button
               type="button"
-              onClick={() => goTo(index - 1)}
+              onClick={() => scrollByCard(-1)}
               aria-label="Recenzia anterioară"
-              className="flex size-10 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors hover:border-gold hover:text-gold dark:border-foreground/15"
+              className="flex size-11 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors hover:border-gold hover:text-gold dark:border-foreground/15"
             >
               <ChevronLeft className="size-4" />
             </button>
-
-            <div className="flex items-center gap-2">
-              {testimonials.map((testimonial, i) => (
-                <button
-                  key={testimonial.id}
-                  onClick={() => goTo(i)}
-                  aria-label={`Vezi recenzia ${i + 1}`}
-                  className={cn(
-                    "h-1.5 rounded-full transition-all duration-500",
-                    i === index ? "w-6 bg-gold" : "w-1.5 bg-ink/15 dark:bg-foreground/20",
-                  )}
-                />
-              ))}
-            </div>
-
             <button
               type="button"
-              onClick={() => goTo(index + 1)}
+              onClick={() => scrollByCard(1)}
               aria-label="Recenzia următoare"
-              className="flex size-10 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors hover:border-gold hover:text-gold dark:border-foreground/15"
+              className="flex size-11 items-center justify-center rounded-full border border-ink/15 text-foreground transition-colors hover:border-gold hover:text-gold dark:border-foreground/15"
             >
               <ChevronRight className="size-4" />
             </button>
           </div>
+        </div>
+
+        <div
+          ref={scrollerRef}
+          className="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-6 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="flex w-[85%] shrink-0 snap-start flex-col gap-5 rounded-[2rem] border border-border-subtle bg-surface p-7 shadow-luxury sm:w-[calc((100%-3rem)/3)] sm:p-8"
+            >
+              <div className="flex items-center justify-between">
+                <Quote className="size-7 text-gold/40" strokeWidth={1.2} />
+                <div className="flex gap-0.5">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} className="size-3.5 fill-gold text-gold" />
+                  ))}
+                </div>
+              </div>
+
+              <p className="font-display text-lg leading-relaxed text-foreground sm:text-xl">
+                &ldquo;{testimonial.quote}&rdquo;
+              </p>
+
+              <div className="mt-auto flex items-center gap-3 border-t border-border-subtle pt-5">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gold/15 font-display text-sm text-gold">
+                  {testimonial.initials}
+                </div>
+                <div className="text-left leading-tight">
+                  <p className="text-sm font-medium text-foreground">{testimonial.name}</p>
+                  {testimonial.service ? (
+                    <p className="text-xs text-muted">{testimonial.service}</p>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
     </section>

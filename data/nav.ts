@@ -1,9 +1,8 @@
 export const navLinks = [
-  { label: "Studio", href: "#about" },
-  { label: "Servicii", href: "#services" },
-  { label: "Galerie", href: "#gallery" },
-  { label: "Prețuri", href: "#pricing" },
-  { label: "Vlada", href: "#vlada" },
-  { label: "Recenzii", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Servicii", href: "/servicii" },
+  { label: "Prețuri", href: "/preturi" },
+  { label: "Galerie", href: "/galerie" },
+  { label: "Despre", href: "/despre" },
+  { label: "Recenzii", href: "/#testimonials" },
+  { label: "Contact", href: "/#booking" },
 ];

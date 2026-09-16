@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -6,20 +5,12 @@ import { OrnamentDivider, SectionSeam } from "@/components/ui/decor";
 
 export function CTABanner() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
-      <Image
-        src="/jaguar/blana-jaguar.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 [background:radial-gradient(55%_75%_at_50%_50%,rgba(20,14,8,0.72)_0%,rgba(20,14,8,0.4)_60%,rgba(20,14,8,0.05)_88%)]"
-      />
+    <section className="relative overflow-hidden bg-ink py-24 sm:py-32">
+      {/* Subtle jaguar-print motif instead of the actual fur photo — the
+          Footer right below already uses that photo, so repeating it here
+          read as two duplicate leopard images back to back. */}
+      <div aria-hidden className="pattern-jaguar absolute inset-0 opacity-[0.06]" />
       <SectionSeam color="var(--background)" className="h-28 sm:h-36" />
-      <SectionSeam color="var(--color-ink)" position="bottom" className="h-28 sm:h-36" />
       <Container className="relative flex flex-col items-center gap-8 text-center">
         <Reveal>
           <OrnamentDivider tone="ivory" />
@@ -30,7 +21,7 @@ export function CTABanner() {
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <Button href="#contact" size="lg">
+          <Button href="/#booking" size="lg">
             Programează-te
           </Button>
         </Reveal>

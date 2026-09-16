@@ -84,7 +84,7 @@ export function Pricing() {
           </AnimatePresence>
         </div>
 
-        <Button href="#contact" size="lg">
+        <Button href="/#booking" size="lg">
           Programează-te
         </Button>
       </Container>

@@ -138,7 +138,7 @@ export function BookingCalendar() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-[2rem] border border-border-subtle bg-surface p-10 text-center shadow-luxury sm:p-14">
+      <div className="flex flex-col items-center gap-4 rounded-none border border-border-subtle bg-surface p-10 text-center shadow-luxury sm:p-14">
         <div className="flex size-14 items-center justify-center rounded-full bg-gold/15 text-gold">
           <Check className="size-6" />
         </div>
@@ -165,7 +165,7 @@ export function BookingCalendar() {
   }
 
   return (
-    <div className="grid w-full gap-0 overflow-hidden rounded-[2rem] border border-border-subtle bg-surface shadow-luxury lg:grid-cols-[1.1fr_1fr]">
+    <div className="grid w-full gap-0 overflow-hidden rounded-none border border-border-subtle bg-surface shadow-luxury lg:grid-cols-[1.1fr_1fr]">
       {/* Calendar */}
       <div className="flex flex-col gap-5 border-b border-border-subtle p-7 sm:p-9 lg:border-b-0 lg:border-r">
         <div className="flex items-center justify-between">
@@ -179,7 +179,7 @@ export function BookingCalendar() {
               disabled={!canGoPrev}
               onClick={() => setVisibleMonth((m) => new Date(m.getFullYear(), m.getMonth() - 1, 1))}
               aria-label="Luna anterioară"
-              className="flex size-8 items-center justify-center rounded-full border border-border-subtle text-foreground transition-colors hover:border-gold hover:text-gold disabled:pointer-events-none disabled:opacity-30"
+              className="flex size-8 items-center justify-center rounded-none border border-border-subtle text-foreground transition-colors hover:border-gold hover:text-gold disabled:pointer-events-none disabled:opacity-30"
             >
               <ChevronLeft className="size-4" />
             </button>
@@ -188,7 +188,7 @@ export function BookingCalendar() {
               disabled={!canGoNext}
               onClick={() => setVisibleMonth((m) => new Date(m.getFullYear(), m.getMonth() + 1, 1))}
               aria-label="Luna următoare"
-              className="flex size-8 items-center justify-center rounded-full border border-border-subtle text-foreground transition-colors hover:border-gold hover:text-gold disabled:pointer-events-none disabled:opacity-30"
+              className="flex size-8 items-center justify-center rounded-none border border-border-subtle text-foreground transition-colors hover:border-gold hover:text-gold disabled:pointer-events-none disabled:opacity-30"
             >
               <ChevronRight className="size-4" />
             </button>
@@ -220,10 +220,10 @@ export function BookingCalendar() {
                   setSelectedTime(null);
                 }}
                 className={cn(
-                  "flex aspect-square items-center justify-center rounded-xl text-sm transition-colors duration-200",
+                  "flex aspect-square items-center justify-center rounded-none text-sm transition-colors duration-200",
                   disabled && "text-muted/40 line-through",
                   !disabled && !isSelected && "text-foreground hover:bg-gold/12",
-                  isSelected && "bg-gold font-medium text-ink shadow-gold-glow",
+                  isSelected && "bg-gold font-medium text-[#fef9ed] shadow-gold-glow",
                   !isSelected && isToday && !disabled && "border border-gold/50",
                 )}
               >
@@ -255,9 +255,9 @@ export function BookingCalendar() {
                       type="button"
                       onClick={() => setSelectedTime(slot)}
                       className={cn(
-                        "rounded-full border px-3.5 py-1.5 text-sm transition-colors duration-200",
+                        "rounded-none border px-3.5 py-1.5 text-sm transition-colors duration-200",
                         selectedTime === slot
-                          ? "border-gold bg-gold text-ink"
+                          ? "border-gold bg-gold text-[#fef9ed]"
                           : "border-border-subtle text-foreground hover:border-gold/60 hover:text-gold",
                       )}
                     >
@@ -284,9 +284,9 @@ export function BookingCalendar() {
                 type="button"
                 onClick={() => setServiceId(service.id)}
                 className={cn(
-                  "rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200",
+                  "rounded-none border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200",
                   serviceId === service.id
-                    ? "border-gold bg-gold text-ink"
+                    ? "border-gold bg-gold text-[#fef9ed]"
                     : "border-border-subtle text-foreground hover:border-gold/60 hover:text-gold",
                 )}
               >
@@ -307,7 +307,7 @@ export function BookingCalendar() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Numele tău"
-              className="h-11 rounded-xl border border-border-subtle bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-gold"
+              className="h-11 rounded-none border border-border-subtle bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-gold"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -320,23 +320,23 @@ export function BookingCalendar() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="+373 6XX XXX XX"
-              className="h-11 rounded-xl border border-border-subtle bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-gold"
+              className="h-11 rounded-none border border-border-subtle bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-gold"
             />
           </div>
         </div>
 
-        <div className="flex flex-col gap-2.5 rounded-2xl border border-border-subtle bg-surface-muted/40 p-4">
+        <div className="flex flex-col gap-2.5 rounded-none border border-border-subtle bg-surface-muted/40 p-4">
           <p className="text-xs font-medium uppercase tracking-wide text-muted">
             Politică de reprogramare
           </p>
           <div className="grid grid-cols-2 gap-2.5">
-            <div className="flex flex-col gap-1 rounded-xl bg-gold/10 p-3">
+            <div className="flex flex-col gap-1 rounded-none bg-gold/10 p-3">
               <span className="text-sm font-medium text-gold">Gratis</span>
               <span className="text-xs text-muted">
                 cu peste {bookingPolicy.freeThresholdDays} zile înainte
               </span>
             </div>
-            <div className="flex flex-col gap-1 rounded-xl bg-wine/10 p-3">
+            <div className="flex flex-col gap-1 rounded-none bg-wine/10 p-3">
               <span className="text-sm font-medium text-wine">{bookingPolicy.lateFee} lei</span>
               <span className="text-xs text-muted">
                 cu mai puțin de {bookingPolicy.lateThresholdHours}h înainte
@@ -349,7 +349,7 @@ export function BookingCalendar() {
           type="button"
           disabled={!isFormComplete || sending}
           onClick={handleSubmit}
-          className="group relative isolate mt-auto flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-ink text-sm font-medium text-ivory shadow-luxury transition-all duration-500 hover:bg-gold hover:text-ink disabled:pointer-events-none disabled:opacity-40 dark:bg-gold dark:text-ink"
+          className="group relative isolate mt-auto flex h-12 items-center justify-center gap-2 overflow-hidden rounded-none bg-ink text-[11px] font-semibold uppercase tracking-[0.14em] text-[#fef9ed] shadow-luxury transition-all duration-500 hover:bg-gold hover:text-[#fef9ed] disabled:pointer-events-none disabled:opacity-40"
         >
           <MessageCircle className="size-4" />
           {sending ? "Se trimite…" : "Trimite cererea de programare"}

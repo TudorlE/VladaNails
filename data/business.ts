@@ -17,7 +17,7 @@ export const business: BusinessInfo = {
   addressShort: "Chișinău, Moldova",
   mapEmbedUrl: "https://www.google.com/maps?q=47.055519,28.850413&z=16&output=embed",
   mapLinkUrl: "https://maps.app.goo.gl/CWgCbiYQYyn3YSHK7",
-  bookingUrl: "#contact",
+  bookingUrl: "/#booking",
   hours: [
     { day: "Luni", hours: "10:00 – 19:00" },
     { day: "Marți", hours: "10:00 – 19:00" },

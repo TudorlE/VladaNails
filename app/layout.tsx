@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Jost } from "next/font/google";
+import { Fraunces, Jost, Instrument_Serif, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
@@ -19,6 +19,21 @@ const fraunces = Fraunces({
 
 const jost = Jost({
   variable: "--font-jost",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
+/* Used only inside `.theme-paint`-scoped sections (Hero, Navbar, Booking,
+   Products) — see globals.css. */
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+const poppinsPaint = Poppins({
+  variable: "--font-poppins-paint",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
@@ -111,7 +126,7 @@ export default function RootLayout({
   return (
     <html
       lang="ro"
-      className={`${fraunces.variable} ${jost.variable}`}
+      className={`${fraunces.variable} ${jost.variable} ${instrumentSerif.variable} ${poppinsPaint.variable}`}
       suppressHydrationWarning
     >
       <head>

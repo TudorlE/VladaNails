@@ -15,7 +15,9 @@ export function FAQ() {
 
   return (
     <section className="relative bg-surface-muted/40 py-24 sm:py-32">
-      <SectionSeam color="var(--background)" />
+      {/* Literal cream, not var(--background): the preceding Products section is
+          .theme-paint-scoped and stays fixed cream regardless of light/dark mode. */}
+      <SectionSeam color="#fef9ed" />
       <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Bine de Știut"

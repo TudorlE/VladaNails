@@ -1,86 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { SectionSeam } from "@/components/ui/decor";
-import { RevealGroup, revealItem } from "@/components/ui/reveal";
-import { DynamicIcon } from "@/components/ui/icon-map";
-import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
+import { PaintButton } from "@/components/ui/paint-button";
 import { services } from "@/data/services";
-import { getCategoryColor } from "@/data/category-colors";
-import { cn } from "@/lib/utils";
 
 export function Services() {
   return (
-    <section id="services" className="relative bg-background py-24 sm:py-32">
-      <SectionSeam color="var(--surface-muted-blend)" />
-      <Container className="flex flex-col items-center gap-16">
+    <section id="services" className="theme-paint relative bg-background py-24 sm:py-32">
+      <SectionSeam color="var(--background)" />
+      <Container className="flex flex-col items-center gap-14">
         <SectionTitle
           eyebrow="Servicii Semnătură"
           title="Lucrate pentru fiecare ocazie"
           description="De la o corecție rapidă la un design complicat lucrat manual, fiecare serviciu primește aceeași precizie."
         />
 
-        <RevealGroup className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const color = getCategoryColor(service.category);
-            return (
-              <motion.div
-                key={service.id}
-                variants={revealItem}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative flex flex-col gap-5 overflow-hidden rounded-3xl border border-border-subtle bg-surface p-7 pt-8 shadow-luxury transition-shadow duration-500 hover:shadow-luxury-lg"
-              >
-                <span
-                  aria-hidden
-                  className={cn("absolute inset-x-0 top-0 h-1", color.bgSolid)}
-                />
-
-                {service.featured ? (
-                  <span className="absolute right-5 top-6 rounded-full bg-gold/15 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-gold">
-                    Popular
-                  </span>
-                ) : service.displayPrice === "Gratis" ? (
-                  <span className="absolute right-5 top-6 rounded-full bg-wine/12 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-wine">
-                    Inclus
-                  </span>
-                ) : null}
-
-                <div
-                  className={cn(
-                    "flex size-14 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:scale-110",
-                    color.bgSoft,
-                    color.text,
-                  )}
-                >
-                  <DynamicIcon name={service.icon} className="size-6" />
+        {/* "Menu card" inspired by paintnailslondon.co.uk's price list: a solid
+            maroon card with a thin sage inner frame, each service as a
+            name/price row on one baseline, divided by a hairline rule. */}
+        <Reveal className="w-full max-w-xl">
+          <div className="relative overflow-hidden bg-[#6c3231] p-6 shadow-luxury sm:p-8">
+            <div className="flex flex-col border border-[#B4BFB4]/70 p-6 sm:p-8">
+              {services.map((service, index) => (
+                <div key={service.id} className="flex flex-col gap-2">
+                  {index > 0 ? <hr className="mb-5 mt-1 border-t border-[#B4BFB4]/40" /> : null}
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-display text-xl text-[#fef9ed] sm:text-2xl">
+                      {service.title}
+                      {service.featured ? (
+                        <span className="ml-2.5 align-middle text-[10px] font-sans font-medium uppercase tracking-[0.14em] text-[#B4BFB4]">
+                          Popular
+                        </span>
+                      ) : null}
+                    </h3>
+                    <span className="whitespace-nowrap font-display text-xl text-[#fef9ed] sm:text-2xl">
+                      {service.displayPrice
+                        ? service.displayPrice
+                        : `${service.priceLabel ? `${service.priceLabel} ` : ""}${service.price} lei`}
+                    </span>
+                  </div>
+                  <p className="text-sm font-light leading-relaxed text-[#efe4d3]">
+                    {service.description} — {service.duration}
+                  </p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-2xl text-foreground">{service.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted">{service.description}</p>
-                </div>
-
-                <div className="mt-auto flex items-center justify-between border-t border-border-subtle pt-5">
-                  <span className="text-xs uppercase tracking-wide text-muted">
-                    {service.duration}
-                  </span>
-                  <span className={cn("font-display text-xl", color.text)}>
-                    {service.displayPrice
-                      ? service.displayPrice
-                      : `${service.priceLabel ? `${service.priceLabel} ` : ""}${service.price} lei`}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </RevealGroup>
-
-        <Button href="#pricing" variant="secondary" size="lg">
+        <PaintButton href="/preturi" variant="ghost">
           Vezi Lista Completă de Prețuri
-        </Button>
+        </PaintButton>
       </Container>
     </section>
   );
